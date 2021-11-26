@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteChosenCharacter, getCharacterDetailsThunk, getCharacterFirstEpisode } from '../redux/characterReducer'
 import {
   SemitransparentBackgroundForModal, CharacterDetailsModal,
-  ImageOnDetailPage, StatusCircleOnDetailPage, Status, FieldHeader, Field, Species, Info
+  ImageOnDetailPage, StatusCircleOnDetailPage, CharacterDetailedInfo,
+  FieldHeader, Field, Species, Info, LastInfo
 } from '../styled-components/Character-styled'
 import { backgroundColors, CloseModalButton } from '../styled-components/CommonStyledComponents'
 
@@ -36,12 +37,15 @@ export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility
     {chosenCharacter ? <SemitransparentBackgroundForModal>
       <CharacterDetailsModal>
         <ImageOnDetailPage src={chosenCharacter.image} alt={`character ${chosenCharacter.name}`} />
-        <div>
+        <CharacterDetailedInfo>
           <h3>{chosenCharacter.name}</h3>
           <StatusCircleOnDetailPage backgroundColor={backgroundColors[chosenCharacter.status.toLowerCase()]} />
           <span>{chosenCharacter.status}</span><br />
           <Species>{chosenCharacter.species}</Species>
-          {chosenCharacter.type ? <Field>Type: {chosenCharacter.type}</Field> : null}
+          {chosenCharacter.type ?
+            <Field>
+              <FieldHeader>type:</FieldHeader>
+              <Info>{chosenCharacter.type}</Info></Field> : null}
           <Field>
             <FieldHeader>gender:</FieldHeader>
             <Info>{chosenCharacter.gender}</Info>
@@ -56,9 +60,9 @@ export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility
           </Field>
           {chosenCharacterFirstEpisode ? <Field>
             <FieldHeader>first seen in:</FieldHeader>
-            <Info>{chosenCharacterFirstEpisode}</Info>
+            <LastInfo>{chosenCharacterFirstEpisode}</LastInfo>
           </Field> : null}
-        </div>
+        </CharacterDetailedInfo>
 
         <CloseModalButton onClick={hideCharacterDetails}>&#215;</CloseModalButton>
       </CharacterDetailsModal>

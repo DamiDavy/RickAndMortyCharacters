@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCharactersThunk } from '../redux/characterReducer'
 import { CharactersContainer } from '../styled-components/Character-styled'
 import { Main } from '../styled-components/Characters-styled'
+import { ShowHideFilterButton } from '../styled-components/Filters-styled'
 import { Character } from './Character'
 import { CharacterDetails } from './CharacterDetails'
 import { Pagination } from './Pagination'
 
-export function Characters() {
+export function Characters({ filtersComponent, contentComponent }) {
 
   const [isCharacterDetailsVisible, toggleCharacterDetailsVisibility] = useState(false)
   const [chosenCharacterId, setChosenCharacterId] = useState(null)
@@ -32,6 +33,11 @@ export function Characters() {
     }
   }
 
+  function showFilters() {
+    filtersComponent.current.style.display = 'block';
+    contentComponent.current.style.display = 'none';
+  }
+
   return (
     <Main>
       {isCharacterDetailsVisible ?
@@ -40,6 +46,7 @@ export function Characters() {
           toggleCharacterDetailsVisibility={toggleCharacterDetailsVisibility} />
         : null}
 
+      <ShowHideFilterButton onClick={showFilters}>Open Filters</ShowHideFilterButton>
       <p>{searchedCharactersNumber} characters found</p>
       <Pagination />
 

@@ -1,12 +1,21 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-  padding: 1.5rem 1rem 2rem 2rem;
+  padding: 0rem 1rem 2rem 2rem;
   border-right: 1px solid #aaa;
   min-height: 100vh;
   position: fixed;
+  top: 15%;
   width: 20%;
   box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0, .3);
+  overflow-y: auto;
+  @media (max-width: 1200px) {
+    width: 40%;
+  }
+  @media (max-width: 800px) {
+    width: 90%;
+    position: relative;
+  }
 `
 
 export const FormHeader = styled.h5`
@@ -14,8 +23,9 @@ export const FormHeader = styled.h5`
 `
 
 export const TextInput = styled.input`
+  border: 1px solid gray;
+  border-radius: 0.2rem;
   width: 100%;
-  margin-bottom: 0.5rem;
   font-size: 1rem;
   padding: 0.3rem;
 `
@@ -70,15 +80,32 @@ export const SubmitFormButton = styled.button`
   margin: 0.2rem 1rem 0.3rem auto;
 `
 
+export const ClearFilterButton = styled(SubmitFormButton)`
+  float: right;
+  width: auto;
+  margin-top: 5rem;
+  background-color: white;
+  color: rgb(0, 84, 133);
+`
+
 export const DisabledButton = styled(SubmitFormButton)`
   background-color: gray;
   color: white;
   cursor: default;
 `
 
+export const ShowHideFilterButton = styled(SubmitFormButton)`
+  display: none;
+  width: auto;
+  float: right;
+  @media (max-width: 800px) {
+    display: inline;
+  }
+`
+
 export const TextInputContainer = styled.div`
   max-width: 70%;
-  margin: 0;
+  margin: 0 0 0.7rem;
   padding: 0;
   position: relative;
 `

@@ -7,15 +7,15 @@ export const SemitransparentBackgroundForModal = styled.div`
   left: 0;
   right: 0;
   z-index: 2;
-  background-color: rgba(161, 159, 160, 0.5);
+  background-color: rgba(204, 235, 234, 0.4);
 `
 
 export const CharactersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 1rem auto;
-  justify-content: center;
-  @media (max-width: 600px) {
+  // justify-content: center;
+  @media (max-width: 800px) {
     margin: 0rem;
     width: 95vw;
   }
@@ -30,9 +30,7 @@ export const CharacterInfo = styled.div`
   border: 1px solid rgba(27, 6, 189, 0.2);
   border-radius: 0.4rem;
   display: flex;
-  flex-wrap: nowrap;
   color: rgb(86, 92, 88);
-  background-color: #fefefe;
   box-shadow: 0 0.2rem 0.5rem 0 rgba(0,0,0, .3);
   & > div {
     padding: 0.5rem;
@@ -42,32 +40,57 @@ export const CharacterInfo = styled.div`
     padding: 0;
     margin: 0 0 0.3rem;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     min-width: 8rem;
+    height: 10rem;
+    display: block;
+    & > div {
+      margin-left: 40%;
+      height: 10rem;
+    }
+  }
+  @media (max-width: 400px) {
+    min-width: 8rem;
+    min-height: 8rem;
+    display: block;
+    & > div {
+      margin-left: 40%;
+      height: 8rem;
+    }
   }
 `
 
 export const CharacterDetailsModal = styled(CharacterInfo)`
   font-size: 1.2rem;
   position: relative;
-  margin: 10vh auto;
+  margin: 15vh auto;
   border: none;
   border-radius: 0.2rem;
   width: 90%;
   max-width: 55rem;
+  background-color: white;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3), 0 2.5rem 5rem 0 rgba(0,0,0, .3);
   & > div {
-    margin-bottom: 2rem;
+    margin: 0.8rem 2rem;
   }
-  @media (max-width: 600px) {
-    margin: 2vh auto;
+  @media (max-width: 800px) {
+    height: 80vh;
     display: block;
-    height: 90vh;
-    overflow-y: auto;
+    padding-bottom: 3rem;
+    margin: 5vh auto;
+    overflow-y: scroll;
+  }
+`
+
+export const CharacterDetailedInfo = styled.div`
+  h3 {
+    font-size: 1.6rem;
+    margin: 0.3rem 0rem 0.5rem;
   }
 `
 
 export const CharacterImage = styled.img`
+background-color: blue;
   cursor: pointer;
   margin: 0rem;
   display: block;
@@ -79,15 +102,21 @@ export const CharacterImage = styled.img`
   &:hover {
     opacity: 1.0;
   }
+  @media (max-width: 800px) {
+    float: left;
+    min-height: 100%;
+    opacity: 1.0;
+  }
 `
 
 export const ImageOnDetailPage = styled(CharacterImage)`
-  margin: 0rem;
-  margin-right: 2rem;
+  width: 50%;
+  margin: 0;
   border-radius: 0.2rem;
   cursor: default;
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     width: 100%;
+    min-height: 50vh;
   }
 `
 
@@ -97,34 +126,45 @@ export const StatusCircle = styled.div`
   border: none;
   border-radius: 50%;
   background-color: ${props => props.backgroundColor || "gray"};
-  display: inline-block;
-  margin: 0.7rem 0.3rem 0rem 0rem;
+  margin: 0.3rem;
+  float: left;
 `
 
 export const StatusCircleOnDetailPage = styled(StatusCircle)`
   width: 1.3rem;
   height: 1.3rem;
+  float: left;
 `
 
 export const Status = styled.div`
   display: inline-block;
-  padding: 0.2rem;
+  padding: 0 0.2rem;
   font-size: 1.3rem;
 `
 
 export const FieldHeader = styled.h5`
   margin: 0.2rem 0;
   font-size: 0.9em;
+  @media (max-width: 400px) {
+    padding: 0rem;
+    margin: 0rem;
+  }
 `
 
 export const Field = styled.p`
   margin: 0rem 0rem 0.5rem;
 `
 
+export const TypeField = styled.p`
+  @media (max-width: 400px) {
+    display: none;
+  }
+`
+
 export const Species = styled.h4`
-  margin: 0.2rem 0;
   font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  width: 50%;
+  margin: 0.5rem;
 `
 
 export const ButtonToOpenDetails = styled.button`
@@ -137,15 +177,22 @@ export const ButtonToOpenDetails = styled.button`
   padding: 0;
   cursor: pointer;
   h4 {
-    margin: 0;
+    margin: 0 0 0.5rem;
     padding: 0;
+    @media (max-width: 400px) {
+      font-size: 1rem;
+    }
   }
   &:hover {
     color: rgb(168, 15, 115);
   }
 `
 
-export const Info = styled.span`
-  font-size: 1.3rem;
-  padding-left: 1.2rem;
+export const Info = styled.div`
+  font-size: 1.2rem;
+  margin: 0rem 0rem 1rem 1.5rem;
+`
+
+export const LastInfo = styled(Info)`
+  padding-bottom: 3rem;
 `

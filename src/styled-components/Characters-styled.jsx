@@ -10,18 +10,18 @@ export const Main = styled.div`
 `
 
 export const PageButton = styled.button`
-  color: ${props => props.color || 'blue'};
+  color: ${props => props.color || 'Teal'};
   font-weight: ${props => !props.color && 'bolder'};
   background-color: white;
+  background-color: ${props => !props.color && 'LightCyan'};
   font-size: 1.2rem;
-  border: 1px solid ${props => props.color || 'blue'};
+  border: 1px solid ${props => props.color || 'Teal'};
   border-radius: 0.2rem;
   margin: 0.05rem;
-  cursor: ${props => props.color === 'blue' ? 'pointer' : 'default'};
+  cursor: ${props => props.color === 'Teal' ? 'pointer' : 'default'};
   padding: 0.5rem;
   &:hover {
-    color: ${props => props.color === 'blue' && 'rgb(168, 15, 115)'};
-    border: 1px solid ${props => props.color === 'blue' && 'rgb(168, 15, 115)'};
+    background-color: ${props => props.color === 'Teal' && 'MediumAquaMarine'};
   }
 `
 

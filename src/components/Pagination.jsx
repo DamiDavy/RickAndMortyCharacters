@@ -27,8 +27,8 @@ export function Pagination() {
   }
 
   const bottonColors = {
-    true: 'blue',
-    false: 'gray',
+    true: 'Teal',
+    false: 'Thistle',
   }
 
   return <>
@@ -38,11 +38,11 @@ export function Pagination() {
         <PageButton onClick={showTheFirstPage} color={bottonColors[pageNumber > 1]}>
           &#8249;&#8249;
         </PageButton>
-        {pageNumber > 1 ? <PageButton onClick={showPreviousPage} color={'blue'}>
+        {pageNumber > 1 ? <PageButton onClick={showPreviousPage} color={'Teal'}>
           {pageNumber - 1}
         </PageButton> : null}
         <PageButton>{pageNumber}</PageButton>
-        {pageNumber < numberOfPages ? <PageButton onClick={showNextPage} color={'blue'}>
+        {pageNumber < numberOfPages ? <PageButton onClick={showNextPage} color={'Teal'}>
           {+pageNumber + 1}
         </PageButton> : null}
         <PageButton onClick={showTheLastPage} color={bottonColors[pageNumber < numberOfPages]}>
