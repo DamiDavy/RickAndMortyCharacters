@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCharactersThunk } from '../redux/characterReducer'
+import { getCharactersThunk, toggleFilters } from '../redux/characterReducer'
 import { CharactersContainer } from '../styled-components/Character-styled'
 import { Main } from '../styled-components/Characters-styled'
-import { ShowHideFilterButton } from '../styled-components/Filters-styled'
+import { ShowHideFilterButton, RemoveFiltersButton } from '../styled-components/Filters-styled'
 import { Character } from './Character'
 import { CharacterDetails } from './CharacterDetails'
 import { Pagination } from './Pagination'
@@ -18,6 +18,8 @@ export function Characters({ filtersComponent, contentComponent }) {
 
   const characters = useSelector(state => state.characters)
   const searchedCharactersNumber = useSelector(state => state.charactersCount)
+  const filtersIsActive = useSelector(state => state.filtersIsActive)
+  console.log(filtersIsActive)
 
   useEffect(() => {
     dispatch(getCharactersThunk())
@@ -27,15 +29,18 @@ export function Characters({ filtersComponent, contentComponent }) {
     setChosenCharacterId(id);
     if (!isCharacterDetailsVisible) {
       toggleCharacterDetailsVisibility(true);
-      // if (window.innerWidth > 800) {
       document.body.style.overflowY = 'hidden'
-      // }
     }
   }
 
   function showFilters() {
     filtersComponent.current.style.display = 'block';
     contentComponent.current.style.display = 'none';
+  }
+
+  function disableFilters() {
+    dispatch(toggleFilters(false))
+    dispatch(getCharactersThunk())
   }
 
   return (
@@ -47,7 +52,11 @@ export function Characters({ filtersComponent, contentComponent }) {
         : null}
 
       <ShowHideFilterButton onClick={showFilters}>Open Filters</ShowHideFilterButton>
-      <p>{searchedCharactersNumber} characters found</p>
+      {characters ? <p>{searchedCharactersNumber} characters found</p> : null}
+
+      {filtersIsActive ? <RemoveFiltersButton onClick={disableFilters}>
+        Disable Filters
+      </RemoveFiltersButton> : null}
       <Pagination />
 
       <CharactersContainer>
@@ -55,7 +64,7 @@ export function Characters({ filtersComponent, contentComponent }) {
           key={character.id}
           character={character}
           showCharacterDetails={showCharacterDetails} />)
-          : null}
+          : <h2>No Characters Found</h2>}
       </CharactersContainer>
 
     </Main>

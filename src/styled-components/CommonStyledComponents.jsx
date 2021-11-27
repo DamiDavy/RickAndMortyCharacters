@@ -18,7 +18,7 @@ export const CloseModalButton = styled(CloseOrCleanButton)`
   &:hover {
     color: color: rgb(27, 6, 189);
   }
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     padding: 0.2rem 0.5rem;
     background-color: whitesmoke;
     border: 1px solid gray;
@@ -29,7 +29,7 @@ export const CloseModalButton = styled(CloseOrCleanButton)`
 export const CloseFiltersButton = styled(CloseModalButton)`
   top: 2rem;
   right: 2rem;
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     display: none;
   }
 `

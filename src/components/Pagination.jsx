@@ -32,7 +32,7 @@ export function Pagination() {
   }
 
   return <>
-    <p>{numberOfPages} pages</p>
+    {numberOfPages ? <p>{numberOfPages} pages</p> : null}
     <PaginationContainer>
       {numberOfPages ? <>
         <PageButton onClick={showTheFirstPage} color={bottonColors[pageNumber > 1]}>
@@ -47,7 +47,7 @@ export function Pagination() {
         </PageButton> : null}
         <PageButton onClick={showTheLastPage} color={bottonColors[pageNumber < numberOfPages]}>
           &#8250;&#8250;
-        </PageButton></> : 'No Characters Found'}
+        </PageButton></> : null}
     </PaginationContainer>
   </>
 }

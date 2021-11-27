@@ -3,23 +3,29 @@ import styled from 'styled-components'
 export const Form = styled.form`
   padding: 0rem 1rem 2rem 2rem;
   border-right: 1px solid #aaa;
+  border-radius: 0.3rem;
+  background-color: rgb(230, 252, 234);
   min-height: 100vh;
   position: fixed;
-  top: 15%;
+  top: 20%;
   width: 20%;
   box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0, .3);
   overflow-y: auto;
-  @media (max-width: 1200px) {
+  @media (max-width: 1300px) {
     width: 40%;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     width: 90%;
     position: relative;
+    min-height: 80vh;
+  }
+  @media (max-width: 350px) {
+    min-height: 100vh;
   }
 `
 
 export const FormHeader = styled.h5`
- font-size: 1.7rem;
+ font-size: 1.5rem;
 `
 
 export const TextInput = styled.input`
@@ -28,6 +34,7 @@ export const TextInput = styled.input`
   width: 100%;
   font-size: 1rem;
   padding: 0.3rem;
+  color: #444;
 `
 
 export const InputTitle = styled.h4`
@@ -59,7 +66,7 @@ export const RadioInput = styled.input`
     top: -0.2rem;
     left: -0.3rem;
     position: relative;
-    background-color: rgb(7, 143, 222);
+    background-color: rgb(72, 176, 147);
     content: '';
     display: inline-block;
     visibility: visible;
@@ -70,7 +77,7 @@ export const RadioInput = styled.input`
 export const SubmitFormButton = styled.button`
   display: block;
   width: 50%;
-  background-color: rgb(0, 84, 133);
+  background-color: rgb(72, 176, 147);
   color: white;
   padding: 0.7rem 1rem;
   border: none;
@@ -83,13 +90,18 @@ export const SubmitFormButton = styled.button`
 export const ClearFilterButton = styled(SubmitFormButton)`
   float: right;
   width: auto;
-  margin-top: 5rem;
+  margin-top: 2.2rem;
+  margin-right: 4rem;
   background-color: white;
-  color: rgb(0, 84, 133);
+  color: rgb(34, 156, 119);
+  background-color: rgb(230, 252, 234);
+  &:hover {
+    background-color: white;
+  }
 `
 
 export const DisabledButton = styled(SubmitFormButton)`
-  background-color: gray;
+  background-color: #bbb;
   color: white;
   cursor: default;
 `
@@ -98,9 +110,14 @@ export const ShowHideFilterButton = styled(SubmitFormButton)`
   display: none;
   width: auto;
   float: right;
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     display: inline;
   }
+`
+
+export const RemoveFiltersButton = styled(ClearFilterButton)`
+  float: '';
+  border: 1px solid rgb(43, 204, 158);
 `
 
 export const TextInputContainer = styled.div`

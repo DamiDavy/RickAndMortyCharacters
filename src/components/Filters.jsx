@@ -1,5 +1,5 @@
 import React from 'react'
-import { getCharactersThunk } from '../redux/characterReducer'
+import { getCharactersThunk, toggleFilters } from '../redux/characterReducer'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { createRadioInputs, createTextInput } from '../utils/formConstructors'
@@ -19,8 +19,9 @@ export function Filters({ filtersComponent, contentComponent }) {
   const dispatch = useDispatch()
 
   function filterCharacters() {
-    dispatch(getCharactersThunk(1, name, status, species, type, gender))
-    if (window.innerWidth < 800) {
+    dispatch(getCharactersThunk(1, name, status, species, type, gender));
+    dispatch(toggleFilters(true));
+    if (window.innerWidth < 750) {
       hideFilters();
     }
   }

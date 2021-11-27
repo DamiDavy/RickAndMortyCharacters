@@ -6,6 +6,7 @@ const CLEAR_STATE = 'CLEAR_STATE'
 const DELETE_CHOSEN_CHARACTER = 'DELETE_CHOSEN_CHARACTER'
 const SET_CHOSEN_CHARACTER = 'SET_CHOSEN_CHARACTER'
 const SET_CHARACTER_EPISODE = 'SET_CHARACTER_EPISODE'
+const TOGGLE_FILTERS = 'TOGGLE_FILTERS'
 
 const instanse = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
@@ -23,9 +24,10 @@ export const initialState = {
   nextPageUrl: null,
   numberOfPages: null,
   charactersCount: 0,
-  characters: [],
+  characters: null,
   chosenCharacter: null,
-  chosenCharacterFirstEpisode: ''
+  chosenCharacterFirstEpisode: '',
+  filtersIsActive: false
 }
 
 export const characterReducer = (state = initialState, action) => {
@@ -59,6 +61,11 @@ export const characterReducer = (state = initialState, action) => {
         ...state,
         chosenCharacter: null,
         chosenCharacterFirstEpisode: ''
+      }
+    case TOGGLE_FILTERS:
+      return {
+        ...state,
+        filtersIsActive: action.bool
       }
     case CLEAR_STATE:
       return initialState
@@ -95,6 +102,11 @@ export const deleteChosenCharacter = () => ({
   type: DELETE_CHOSEN_CHARACTER,
 })
 
+export const toggleFilters = bool => ({
+  type: TOGGLE_FILTERS,
+  bool
+})
+
 export const getCharactersThunk =
   (pageNumber = 1, name = '', status = '', species = '', type = '', gender = '') => async (dispatch) => {
     try {
@@ -108,8 +120,8 @@ export const getCharactersThunk =
         dispatch(updateCharacters(result.data.results, result.data.info.count))
       }
     } catch (err) {
-      console.log(err)
       dispatch({ type: CLEAR_STATE })
+      dispatch(toggleFilters(true))
     }
   }
 

@@ -14,8 +14,11 @@ export const CharactersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 1rem auto;
-  // justify-content: center;
-  @media (max-width: 800px) {
+  & h2 {
+    width: 50%;
+    margin: auto;
+  }
+  @media (max-width: 750px) {
     margin: 0rem;
     width: 95vw;
   }
@@ -40,7 +43,7 @@ export const CharacterInfo = styled.div`
     padding: 0;
     margin: 0 0 0.3rem;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     min-width: 8rem;
     height: 10rem;
     display: block;
@@ -73,7 +76,7 @@ export const CharacterDetailsModal = styled(CharacterInfo)`
   & > div {
     margin: 0.8rem 2rem;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     height: 80vh;
     display: block;
     padding-bottom: 3rem;
@@ -102,7 +105,7 @@ background-color: blue;
   &:hover {
     opacity: 1.0;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     float: left;
     min-height: 100%;
     opacity: 1.0;
@@ -114,9 +117,10 @@ export const ImageOnDetailPage = styled(CharacterImage)`
   margin: 0;
   border-radius: 0.2rem;
   cursor: default;
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     width: 100%;
     min-height: 50vh;
+    margin-bottom: 1rem;
   }
 `
 
