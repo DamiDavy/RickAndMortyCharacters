@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   CharacterInfo, CharacterImage, StatusCircle,
-  ButtonToOpenDetails, StatusContainer, TypeField
+  ButtonToOpenDetails, TypeField
 } from '../styled-components/Character-styled'
 import { backgroundColors } from '../styled-components/CommonStyledComponents'
 
