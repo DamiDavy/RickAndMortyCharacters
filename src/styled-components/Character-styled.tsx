@@ -76,7 +76,8 @@ export const ButtonToOpenDetails = styled.button`
   padding: 0;
   cursor: pointer;
   h4 {
-    margin: 0 0 0.5rem;
+    min-height: 3rem;
+    margin: 0.5rem 0rem;
     padding: 0;
     @media (max-width: 400px) {
       font-size: 1rem;
@@ -121,7 +122,7 @@ export const CharacterDetailsModal = styled(CharacterInfo)`
 export const CharacterDetailedInfo = styled.div`
   h3 {
     font-size: 1.6rem;
-    margin: 0.3rem 0rem 0.5rem;
+    margin: 0.3rem 0rem 1rem;
   }
 `
 export const ImageOnDetailPage = styled(CharacterImage)`
@@ -164,7 +165,7 @@ export const TypeField = styled.p`
 export const Species = styled.h4`
   font-size: 1.3rem;
   width: 50%;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5 rem 1rem;
 `
 export const Info = styled.div`
   font-size: 1.2rem;
