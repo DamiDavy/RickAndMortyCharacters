@@ -76,7 +76,8 @@ export const ButtonToOpenDetails = styled.button`
   padding: 0;
   cursor: pointer;
   h4 {
-    margin: 0 0 0.5rem;
+    min-height: 3rem;
+    margin: 0.5rem 0rem;
     padding: 0;
     @media (max-width: 400px) {
       font-size: 1rem;
