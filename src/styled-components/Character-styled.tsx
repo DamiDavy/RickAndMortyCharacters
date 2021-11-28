@@ -1,29 +1,6 @@
 import styled from 'styled-components'
 
-export const SemitransparentBackgroundForModal = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  background-color: rgba(204, 235, 234, 0.4);
-`
-
-export const CharactersContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1rem auto;
-  & h2 {
-    width: 50%;
-    margin: auto;
-  }
-  @media (max-width: 750px) {
-    margin: 0rem;
-    width: 95vw;
-  }
-`
-
+//styles for character item
 export const CharacterInfo = styled.div`
   font-size: 1rem;
   min-width: 22rem;
@@ -62,38 +39,7 @@ export const CharacterInfo = styled.div`
     }
   }
 `
-
-export const CharacterDetailsModal = styled(CharacterInfo)`
-  font-size: 1.2rem;
-  position: relative;
-  margin: 15vh auto;
-  border: none;
-  border-radius: 0.2rem;
-  width: 90%;
-  max-width: 55rem;
-  background-color: white;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.3), 0 2.5rem 5rem 0 rgba(0,0,0, .3);
-  & > div {
-    margin: 0.8rem 2rem;
-  }
-  @media (max-width: 750px) {
-    height: 80vh;
-    display: block;
-    padding-bottom: 3rem;
-    margin: 5vh auto;
-    overflow-y: scroll;
-  }
-`
-
-export const CharacterDetailedInfo = styled.div`
-  h3 {
-    font-size: 1.6rem;
-    margin: 0.3rem 0rem 0.5rem;
-  }
-`
-
 export const CharacterImage = styled.img`
-background-color: blue;
   cursor: pointer;
   margin: 0rem;
   display: block;
@@ -111,66 +57,15 @@ background-color: blue;
     opacity: 1.0;
   }
 `
-
-export const ImageOnDetailPage = styled(CharacterImage)`
-  width: 50%;
-  margin: 0;
-  border-radius: 0.2rem;
-  cursor: default;
-  @media (max-width: 750px) {
-    width: 100%;
-    min-height: 50vh;
-    margin-bottom: 1rem;
-  }
-`
-
 export const StatusCircle = styled.div`
   width: 0.8rem;
   height: 0.8rem;
   border: none;
   border-radius: 50%;
-  background-color: ${props => props.backgroundColor || "gray"};
-  margin: 0.3rem;
+  background-color: ${props => props.color || "gray"};
+  margin: 0.1rem 0.3rem;
   float: left;
 `
-
-export const StatusCircleOnDetailPage = styled(StatusCircle)`
-  width: 1.3rem;
-  height: 1.3rem;
-  float: left;
-`
-
-export const Status = styled.div`
-  display: inline-block;
-  padding: 0 0.2rem;
-  font-size: 1.3rem;
-`
-
-export const FieldHeader = styled.h5`
-  margin: 0.2rem 0;
-  font-size: 0.9em;
-  @media (max-width: 400px) {
-    padding: 0rem;
-    margin: 0rem;
-  }
-`
-
-export const Field = styled.p`
-  margin: 0rem 0rem 0.5rem;
-`
-
-export const TypeField = styled.p`
-  @media (max-width: 400px) {
-    display: none;
-  }
-`
-
-export const Species = styled.h4`
-  font-size: 1.3rem;
-  width: 50%;
-  margin: 0.5rem;
-`
-
 export const ButtonToOpenDetails = styled.button`
   display: block;
   background-color: rgba(27, 6, 189, 0.0);
@@ -192,11 +87,89 @@ export const ButtonToOpenDetails = styled.button`
   }
 `
 
+//styles for character modal
+export const SemitransparentBackgroundForModal = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(204, 235, 234, 0.4);
+`
+export const CharacterDetailsModal = styled(CharacterInfo)`
+  font-size: 1.2rem;
+  position: relative;
+  margin: 15vh auto;
+  border: none;
+  border-radius: 0.2rem;
+  width: 90%;
+  max-width: 55rem;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.3), 0 2.5rem 5rem 0 rgba(0,0,0, .3);
+  & > div {
+    margin: 0.8rem 2rem;
+  }
+  @media (max-width: 750px) {
+    height: 80vh;
+    display: block;
+    padding-bottom: 3rem;
+    margin: 5vh auto;
+    overflow-y: scroll;
+  }
+`
+export const CharacterDetailedInfo = styled.div`
+  h3 {
+    font-size: 1.6rem;
+    margin: 0.3rem 0rem 0.5rem;
+  }
+`
+export const ImageOnDetailPage = styled(CharacterImage)`
+  width: 50%;
+  margin: 0;
+  border-radius: 0.2rem;
+  cursor: default;
+  @media (max-width: 750px) {
+    width: 100%;
+    min-height: 50vh;
+    margin-bottom: 1rem;
+  }
+`
+export const StatusCircleOnDetailPage = styled(StatusCircle)`
+  width: 1.3rem;
+  height: 1.3rem;
+  float: left;
+`
+export const Status = styled.div`
+  display: inline-block;
+  padding: 0 0.2rem;
+  font-size: 1.3rem;
+`
+export const FieldHeader = styled.h5`
+  margin: 0.2rem 0;
+  font-size: 0.9em;
+  @media (max-width: 400px) {
+    padding: 0rem;
+    margin: 0rem;
+  }
+`
+export const Field = styled.p`
+  margin: 0rem 0rem 0.5rem;
+`
+export const TypeField = styled.p`
+  @media (max-width: 400px) {
+    display: none;
+  }
+`
+export const Species = styled.h4`
+  font-size: 1.3rem;
+  width: 50%;
+  margin: 0.5rem;
+`
 export const Info = styled.div`
   font-size: 1.2rem;
   margin: 0rem 0rem 1rem 1.5rem;
 `
-
 export const LastInfo = styled(Info)`
   padding-bottom: 3rem;
 `

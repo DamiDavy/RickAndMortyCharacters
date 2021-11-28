@@ -1,11 +1,10 @@
-import './App.css';
+import * as React from 'react'
 import { Characters } from './components/Characters'
 import store from './redux/store'
 import { Provider } from 'react-redux'
 import { Filters } from './components/Filters';
 import { MainContainer, Header, Footer } from './styled-components/App-styled';
 import { useRef } from 'react';
-
 
 function App() {
 
@@ -30,9 +29,7 @@ function App() {
           />
         </div>
       </MainContainer>
-      <Footer>
-        <div>by DamiDavy</div>
-      </Footer>
+      <Footer />
     </>
   );
 }

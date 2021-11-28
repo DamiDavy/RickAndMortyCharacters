@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   padding: 0rem 1rem 2rem 2rem;
-  border-right: 1px solid #aaa;
+  border: 1px solid rgba(0,0,0, .0);
   border-radius: 0.3rem;
   background-color: rgb(230, 252, 234);
   min-height: 100vh;
@@ -23,27 +23,30 @@ export const Form = styled.form`
     min-height: 100vh;
   }
 `
-
 export const FormHeader = styled.h5`
  font-size: 1.5rem;
 `
-
 export const TextInput = styled.input`
   border: 1px solid gray;
   border-radius: 0.2rem;
-  width: 100%;
+  width: 95%;
   font-size: 1rem;
   padding: 0.3rem;
   color: #444;
+  height: 1.5rem;
 `
-
+export const TextInputContainer = styled.div`
+  max-width: 70%;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  position: relative;
+`
 export const InputTitle = styled.h4`
   margin: 0.5rem 0 0.3rem;
   padding:0;
   font-size: 1.1rem;
   font-weight: bolder;
 `
-
 export const RadioInput = styled.input`
   &[type='radio']:after {
     width: 0.9rem;
@@ -58,7 +61,6 @@ export const RadioInput = styled.input`
     visibility: visible;
     border: 2px solid white;
   }
-
   &[type='radio']:checked:after {
     width: 0.9rem;
     height: 0.9rem;
@@ -73,7 +75,6 @@ export const RadioInput = styled.input`
     border: 2px solid white;
   }
 `
-
 export const SubmitFormButton = styled.button`
   display: block;
   width: 50%;
@@ -86,7 +87,6 @@ export const SubmitFormButton = styled.button`
   font-size: 1em;
   margin: 0.2rem 1rem 0.3rem auto;
 `
-
 export const ClearFilterButton = styled(SubmitFormButton)`
   float: right;
   width: auto;
@@ -99,13 +99,11 @@ export const ClearFilterButton = styled(SubmitFormButton)`
     background-color: white;
   }
 `
-
 export const DisabledButton = styled(SubmitFormButton)`
   background-color: #bbb;
   color: white;
   cursor: default;
 `
-
 export const ShowHideFilterButton = styled(SubmitFormButton)`
   display: none;
   width: auto;
@@ -114,18 +112,7 @@ export const ShowHideFilterButton = styled(SubmitFormButton)`
     display: inline;
   }
 `
-
 export const RemoveFiltersButton = styled(ClearFilterButton)`
   float: '';
   border: 1px solid rgb(43, 204, 158);
 `
-
-export const TextInputContainer = styled.div`
-  max-width: 70%;
-  margin: 0 0 0.7rem;
-  padding: 0;
-  position: relative;
-`
-
-
-

@@ -30,13 +30,14 @@ export const MainContainer = styled.div`
 `
 
 export const Header = styled.header`
+  font-family: 'Balsamiq Sans', cursive;
   color: rgb(15, 138, 123);
   padding-left: 1rem;
   position: fixed;
   display: inline-block;
-  margin-bottom: 2rem;
+  margin: 1rem auto;
   h1 {
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     margin: 1rem 0.5rem;
     @media (max-width: 400px) {
       font-size: 2.2rem;

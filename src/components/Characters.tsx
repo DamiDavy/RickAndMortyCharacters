@@ -1,31 +1,33 @@
-import React from 'react'
+import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCharactersThunk, toggleFilters } from '../redux/characterReducer'
-import { CharactersContainer } from '../styled-components/Character-styled'
-import { Main } from '../styled-components/Characters-styled'
+
+import { getCharactersThunk, toggleFilters } from '../redux/actionCreators&thunks'
+import { stateType } from '../redux/store'
+
+import { Main, CharactersContainer } from '../styled-components/Characters-styled'
 import { ShowHideFilterButton, RemoveFiltersButton } from '../styled-components/Filters-styled'
+
 import { Character } from './Character'
 import { CharacterDetails } from './CharacterDetails'
 import { Pagination } from './Pagination'
 
-export function Characters({ filtersComponent, contentComponent }) {
+export const Characters: React.FC<RefObjectsAsProps> = ({ filtersComponent, contentComponent }) => {
 
   const [isCharacterDetailsVisible, toggleCharacterDetailsVisibility] = useState(false)
-  const [chosenCharacterId, setChosenCharacterId] = useState(null)
+  const [chosenCharacterId, setChosenCharacterId] = useState(0)
+
+  const characters = useSelector((state: stateType) => state.characters)
+  const searchedCharactersNumber = useSelector((state: stateType) => state.charactersCount)
+  const filtersIsActive = useSelector((state: stateType) => state.filtersIsActive)
 
   const dispatch = useDispatch()
 
-  const characters = useSelector(state => state.characters)
-  const searchedCharactersNumber = useSelector(state => state.charactersCount)
-  const filtersIsActive = useSelector(state => state.filtersIsActive)
-  console.log(filtersIsActive)
-
   useEffect(() => {
-    dispatch(getCharactersThunk())
+    dispatch(getCharactersThunk(1))
   }, [dispatch])
 
-  function showCharacterDetails(id) {
+  function showCharacterDetails(id: number) {
     setChosenCharacterId(id);
     if (!isCharacterDetailsVisible) {
       toggleCharacterDetailsVisibility(true);
@@ -34,13 +36,15 @@ export function Characters({ filtersComponent, contentComponent }) {
   }
 
   function showFilters() {
-    filtersComponent.current.style.display = 'block';
-    contentComponent.current.style.display = 'none';
+    if (filtersComponent.current && contentComponent.current) {
+      filtersComponent.current.style.display = 'block';
+      contentComponent.current.style.display = 'none';
+    }
   }
 
   function disableFilters() {
     dispatch(toggleFilters(false))
-    dispatch(getCharactersThunk())
+    dispatch(getCharactersThunk(1))
   }
 
   return (
@@ -52,11 +56,13 @@ export function Characters({ filtersComponent, contentComponent }) {
         : null}
 
       <ShowHideFilterButton onClick={showFilters}>Open Filters</ShowHideFilterButton>
+
       {characters ? <p>{searchedCharactersNumber} characters found</p> : null}
 
       {filtersIsActive ? <RemoveFiltersButton onClick={disableFilters}>
         Disable Filters
       </RemoveFiltersButton> : null}
+
       <Pagination />
 
       <CharactersContainer>
@@ -66,7 +72,11 @@ export function Characters({ filtersComponent, contentComponent }) {
           showCharacterDetails={showCharacterDetails} />)
           : <h2>No Characters Found</h2>}
       </CharactersContainer>
-
     </Main>
   )
+}
+
+export interface RefObjectsAsProps {
+  filtersComponent: React.MutableRefObject<HTMLElement | null>,
+  contentComponent: React.MutableRefObject<HTMLElement | null>,
 }

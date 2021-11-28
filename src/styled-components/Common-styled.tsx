@@ -11,7 +11,6 @@ export const CloseOrCleanButton = styled.button`
   color: gray;
   cursor: pointer;
 `
-
 export const CloseModalButton = styled(CloseOrCleanButton)`
   font-size: 1.6rem;
   font-weight: bold;
@@ -25,7 +24,6 @@ export const CloseModalButton = styled(CloseOrCleanButton)`
     border-radius: 50%;
   }
 `
-
 export const CloseFiltersButton = styled(CloseModalButton)`
   top: 2rem;
   right: 2rem;
@@ -33,14 +31,8 @@ export const CloseFiltersButton = styled(CloseModalButton)`
     display: none;
   }
 `
-
 export const ClearInputButton = styled(CloseOrCleanButton)`
   font-size: 1.2rem;
-  top: -10%;
-  right: 0%;
+  top: 0.1rem;
+  right: 0.1rem;
 `
-
-export const backgroundColors = {
-  alive: 'rgb(25, 227, 133)',
-  dead: 'rgb(209, 67, 67)',
-}

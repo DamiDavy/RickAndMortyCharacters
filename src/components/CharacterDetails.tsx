@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react'
+import * as React from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteChosenCharacter, getCharacterDetailsThunk, getCharacterFirstEpisode } from '../redux/characterReducer'
+
+import { deleteChosenCharacter, getCharacterDetailsThunk, getCharacterFirstEpisode } from '../redux/actionCreators&thunks'
+import { stateType } from '../redux/store'
+
 import {
   SemitransparentBackgroundForModal, CharacterDetailsModal,
   ImageOnDetailPage, StatusCircleOnDetailPage, CharacterDetailedInfo,
   FieldHeader, Field, Species, Info, LastInfo
 } from '../styled-components/Character-styled'
-import { backgroundColors, CloseModalButton } from '../styled-components/CommonStyledComponents'
+import { CloseModalButton } from '../styled-components/Common-styled'
+import { backgroundColors } from './Character'
 
-export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility }) {
+export const CharacterDetails: React.FC<PropsType> = ({ characterId, toggleCharacterDetailsVisibility }) => {
+
+  const chosenCharacter = useSelector((state: stateType) => state.chosenCharacter)
+  const chosenCharacterFirstEpisode = useSelector((state: stateType) => state.chosenCharacterFirstEpisode)
 
   const dispatch = useDispatch()
-
-  const chosenCharacter = useSelector(state => state.chosenCharacter)
-  const chosenCharacterFirstEpisode = useSelector(state => state.chosenCharacterFirstEpisode)
 
   useEffect(() => {
     dispatch(getCharacterDetailsThunk(characterId))
@@ -21,15 +26,17 @@ export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility
 
   useEffect(() => {
     if (chosenCharacter) {
-      const firstEpisodeUrl = chosenCharacter.episode[0];
-      const firstEpisodeId = firstEpisodeUrl.match(/\d+$/)[0];
-      dispatch(getCharacterFirstEpisode(firstEpisodeId))
+      const firstEpisodeUrl = chosenCharacter.episode[0]
+      const firstEpisodeId = firstEpisodeUrl.match(/\d+$/)
+      if (firstEpisodeId) {
+        dispatch(getCharacterFirstEpisode(+firstEpisodeId[0]))
+      }
     }
   }, [chosenCharacter, dispatch])
 
   function hideCharacterDetails() {
     toggleCharacterDetailsVisibility(false)
-    document.body.style.overflowY = '' // - padding
+    document.body.style.overflowY = ''
     dispatch(deleteChosenCharacter());
   }
 
@@ -39,13 +46,15 @@ export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility
         <ImageOnDetailPage src={chosenCharacter.image} alt={`character ${chosenCharacter.name}`} />
         <CharacterDetailedInfo>
           <h3>{chosenCharacter.name}</h3>
-          <StatusCircleOnDetailPage backgroundColor={backgroundColors[chosenCharacter.status.toLowerCase()]} />
+          <StatusCircleOnDetailPage
+            color={backgroundColors[chosenCharacter.status.toLowerCase() as keyof typeof backgroundColors]} />
           <span>{chosenCharacter.status}</span><br />
           <Species>{chosenCharacter.species}</Species>
           {chosenCharacter.type ?
             <Field>
               <FieldHeader>type:</FieldHeader>
-              <Info>{chosenCharacter.type}</Info></Field> : null}
+              <Info>{chosenCharacter.type}</Info>
+            </Field> : null}
           <Field>
             <FieldHeader>gender:</FieldHeader>
             <Info>{chosenCharacter.gender}</Info>
@@ -68,4 +77,9 @@ export function CharacterDetails({ characterId, toggleCharacterDetailsVisibility
       </CharacterDetailsModal>
     </SemitransparentBackgroundForModal> : null}
   </div>
+}
+
+interface PropsType {
+  characterId: number,
+  toggleCharacterDetailsVisibility: (bool: boolean) => void
 }
