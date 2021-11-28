@@ -43,8 +43,7 @@ export const getCharactersThunk =
     return async (dispatch) => {
       try {
         const result =
-          await instanse.get(`/character/?page=${pageNumber}&name=${name}&status=${status}&
-          species=${species}&type=${type}&gender=${gender}`)
+          await instanse.get(`/character/?page=${pageNumber}&name=${name}&status=${status}&species=${species}&type=${type}&gender=${gender}`)
         if (result.status === 200) {
           const prevPageUrl = result.data.info.prev;
           const nextPageUrl = result.data.info.next;
