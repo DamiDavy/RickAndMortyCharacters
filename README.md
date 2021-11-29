@@ -15,6 +15,6 @@ In the root folder type in to create node_modules:
 ```
 and start the app:  
 ```
-    yarn start  
+    npm start  
 ```
 The app should be available on *localhost:3000*  
