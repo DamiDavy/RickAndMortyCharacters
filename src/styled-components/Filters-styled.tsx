@@ -53,7 +53,7 @@ export const RadioInput = styled.input`
     height: 1rem;
     border-radius: 50%;
     top: -0.1rem;
-    left: -0.3rem;
+    left: -0.2rem;
     position: relative;
     background-color: #d1d3d1;
     content: '';
@@ -66,7 +66,7 @@ export const RadioInput = styled.input`
     height: 1rem;
     border-radius: 50%;
     top: -0.1rem;
-    left: -0.3rem;
+    left: -0.2rem;
     position: relative;
     background-color: rgb(72, 176, 147);
     content: '';
