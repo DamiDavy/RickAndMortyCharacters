@@ -56,12 +56,11 @@ export const Characters: React.FC<RefObjectsAsProps> = ({ filtersComponent, cont
         : null}
 
       <ShowHideFilterButton onClick={showFilters}>Open Filters</ShowHideFilterButton>
-
-      {characters ? <p>{searchedCharactersNumber} characters found</p> : null}
-
       {filtersIsActive ? <RemoveFiltersButton onClick={disableFilters}>
         Disable Filters
       </RemoveFiltersButton> : null}
+
+      {characters ? <p>{searchedCharactersNumber} characters found</p> : null}
 
       <Pagination />
 

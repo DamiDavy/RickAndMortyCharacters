@@ -49,10 +49,10 @@ export const InputTitle = styled.h4`
 `
 export const RadioInput = styled.input`
   &[type='radio']:after {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
-    top: -0.2rem;
+    top: -0.1rem;
     left: -0.3rem;
     position: relative;
     background-color: #d1d3d1;
@@ -62,10 +62,10 @@ export const RadioInput = styled.input`
     border: 2px solid white;
   }
   &[type='radio']:checked:after {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
-    top: -0.2rem;
+    top: -0.1rem;
     left: -0.3rem;
     position: relative;
     background-color: rgb(72, 176, 147);
@@ -105,14 +105,21 @@ export const DisabledButton = styled(SubmitFormButton)`
   cursor: default;
 `
 export const ShowHideFilterButton = styled(SubmitFormButton)`
+  font-size: 0.9rem;
   display: none;
   width: auto;
   float: right;
+  &:hover {
+    background-color: rgb(34, 161, 156)
+  }
   @media (max-width: 750px) {
-    display: inline;
+    display: block;
+    min-width: 44%;
   }
 `
-export const RemoveFiltersButton = styled(ClearFilterButton)`
-  float: '';
+
+export const RemoveFiltersButton = styled(ShowHideFilterButton)`
+  clear: both;
+  display: block;
   border: 1px solid rgb(43, 204, 158);
 `
