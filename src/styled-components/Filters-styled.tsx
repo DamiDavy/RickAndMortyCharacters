@@ -49,8 +49,8 @@ export const InputTitle = styled.h4`
 `
 export const RadioInput = styled.input`
   &[type='radio']:after {
-    width: 1rem;
-    height: 1rem;
+    width: 0.9rem;
+    height: 0.9rem;
     border-radius: 50%;
     top: -0.1rem;
     left: -0.2rem;
@@ -60,10 +60,14 @@ export const RadioInput = styled.input`
     display: inline-block;
     visibility: visible;
     border: 2px solid white;
+    @media (max-width: 750px) {
+      width: 1rem;
+      height: 1rem;
+    }
   }
   &[type='radio']:checked:after {
-    width: 1rem;
-    height: 1rem;
+    width: 0.9rem;
+    height: 0.9rem;
     border-radius: 50%;
     top: -0.1rem;
     left: -0.2rem;
@@ -73,6 +77,10 @@ export const RadioInput = styled.input`
     display: inline-block;
     visibility: visible;
     border: 2px solid white;
+    @media (max-width: 750px) {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 `
 export const SubmitFormButton = styled.button`
